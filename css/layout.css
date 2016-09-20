@@ -1,0 +1,14 @@
+aside {
+  width: 10%;
+  float: right;
+}
+
+section {
+  width: 85%;
+  float: left;
+  margin: 10px;
+}
+
+p {
+  margin: 10px;
+}
