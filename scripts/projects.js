@@ -10,11 +10,15 @@ function Projects (object) {
 }
 
 Projects.prototype.toHtml = function() {
+  var skills = 'Technologies: ';
   var $newProject = $('article.project-template').clone();
   $newProject.find('a').attr('href', this.projectUrl);
   $newProject.find('img').attr('src', this.projectImage);
   $newProject.find('h3').html(this.title);
-  $newProject.find('dl').html(this.skillShowcased);
+  $.each(this.skillShowcased, function(index, value){
+    skills += value + ' ';
+  });
+  $newProject.find('dl').html(skills);
   $newProject.find('time[pubdate]').attr('title', this.projectCompleted);
   $newProject.find('time').html('Completed about ' + parseInt((new Date() - new Date(this.projectCompleted))/60/60/24/1000) + ' days ago');
   $newProject.find('section.project-description').html(this.projectDescription);
