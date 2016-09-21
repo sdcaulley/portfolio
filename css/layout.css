@@ -1,14 +1,12 @@
-aside {
-  width: 10%;
-  float: right;
+.group::after {
+  content: "";
+  display: table;
 }
 
-section {
-  width: 85%;
-  float: left;
-  margin: 10px;
+.group::after {
+  clear: both;
 }
 
-p {
-  margin: 10px;
+.group {
+  *zoom: 1;
 }
