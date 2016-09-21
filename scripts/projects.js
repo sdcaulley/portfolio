@@ -23,6 +23,7 @@ Projects.prototype.toHtml = function() {
   $newProject.find('time').html('Completed about ' + parseInt((new Date() - new Date(this.projectCompleted))/60/60/24/1000) + ' days ago');
   $newProject.find('section.project-description').html(this.projectDescription);
   $newProject.removeClass('project-template');
+  $newProject.attr('class', 'desktop-view');
   return $newProject;
 };
 
