@@ -1,7 +1,27 @@
-body {
-  font-family: 'Libre Baskerville', serif;
+html {
+  padding: 2%;
 }
 
-@import "style.css";
-@import "layout.css";
-@import "icons.css";
+body {
+  font-family: 'Libre Baskerville', serif;
+  background-image: url(../img/seamless_paper_texture.png);
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+article {
+  border: solid 2px;
+  border-radius: 20px;
+}
+
+img {
+  max-width: 90%;
+  display: block;
+  margin: auto;
+}
