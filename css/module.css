@@ -47,11 +47,27 @@
     margin: auto;
   }
   .main-nav ul {
-      display: block;
-      text-align: center;
+    display: block;
+    text-align: center;
+  }
+  .main-nav ul li {
+    display: inline;
+    margin: 2%;
     }
-    .main-nav ul li {
-      display: inline;
-      margin: 2%;
-    }
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .desktop-view {
+    width: 45%;
+    margin: 0.75%;
+  }
+  .social {
+    width: 10%;
+    float: right;
+  }
+  #projects {
+    width: 90%;
+    float: left;
+  }
 }

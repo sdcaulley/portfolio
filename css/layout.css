@@ -1,4 +1,4 @@
-.group::after {
+.group::before, .group::after {
   content: "";
   display: table;
 }
