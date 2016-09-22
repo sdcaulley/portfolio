@@ -1,11 +1,18 @@
 var projectView = {};
 
+projectView.populateFilters = function() {
+  for (var i = 0; i < category.length; i++) {
+    var optionTag;
+    optionTag = '<option value="' + category[i] + '">' + category[i] + '</option>';
+    $('#category-filter').append(optionTag);
+  }
+};
+
 projectView.handleMainNav = function () {
   $('.main-nav .tab').on('click', function() {
     var tabValue = $(this).attr('data-content');
     $('.tab-content').hide();
     $('#' + tabValue).fadeIn('slow');
-
   });
 
   $('.main-nav .tab:first').click();
@@ -34,3 +41,4 @@ projectView.setTeasers = function() {
 //Call all the methods
 projectView.handleMainNav();
 projectView.setTeasers();
+projectView.populateFilters();
