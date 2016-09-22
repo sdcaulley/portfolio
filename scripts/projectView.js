@@ -21,6 +21,7 @@ projectView.setTeasers = function() {
     $(this).parent().find('.project-description *:nth-of-type(n+3)').show();
     $(this).html('Show Less');
   });
+
 };
 
 //Call all the methods
