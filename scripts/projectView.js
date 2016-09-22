@@ -16,12 +16,19 @@ projectView.setTeasers = function() {
   in any article body: */
   $('.project-description *:nth-of-type(n+3)').hide();
 
-  $('.read-on').on('click', function(e) {
+  descriptionExpand = function(e) {
     e.preventDefault();
     $(this).parent().find('.project-description *:nth-of-type(n+3)').show();
-    $(this).html('Show Less');
-  });
+    $(this).html('Show Less').removeAttr('class').attr('class', 'show-less').on('click', descriptionCollapse);
+  };
 
+  descriptionCollapse = function(e) {
+    e.preventDefault();
+    $(this).parent().find('.project-description *:nth-of-type(n+3)').hide();
+    $(this).html('More').removeAttr('class').attr('class', 'read-on').on('click', descriptionExpand);
+  };
+
+  $('.read-on').on('click', descriptionExpand);
 };
 
 //Call all the methods
