@@ -5,7 +5,25 @@ projectView.populateFilters = function() {
     var optionTag;
     optionTag = '<option value="' + category[i] + '">' + category[i] + '</option>';
     $('#category-filter').append(optionTag);
-  }
+  };
+};
+
+projectView.handleCategoryFilter = function() {
+  $('#category-filter').on('change', function() {
+    if ($(this).val()) {
+      var categoryValue = $(this).val();
+      console.log(categoryValue);
+      $('article').hide();
+      $('article li').each(function(index, text) {
+        console.log( index + ': ' + $( this ).text() );
+        if (text === categoryValue) {
+          $('article').fadeIn('slow');
+        }
+      });
+    } else {
+      $('article:not(".template")').show();
+    }
+  });
 };
 
 projectView.handleMainNav = function () {
@@ -42,3 +60,4 @@ projectView.setTeasers = function() {
 projectView.handleMainNav();
 projectView.setTeasers();
 projectView.populateFilters();
+projectView.handleCategoryFilter();
