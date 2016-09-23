@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Stephanie Caulley's Portfolio</title>
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arima+Madurai" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="vendor/styles/normalize.css">
     <link rel="stylesheet" href="css/style.css">
@@ -13,7 +14,13 @@
           <a href="{{projectUrl}}"><img src="{{projectImage}}" />
           <h3>{{title}}</h3></a>
           {{publishStatus}}
-          <p>Technologies: <ul id="skills"></ul></p>
+          <p>Technologies:
+            <ul class="skills">
+              {{#each skillShowcased}}
+              <li>{{this}}</li>
+              {{/each}}
+            </ul>
+          </p>
         </header>
         <section class="project-description">{{{projectDescription}}}</section>
         <a href="#" class="read-on">More</a>
@@ -24,7 +31,7 @@
     <header class="group">
       <section class="header">
         <h1>Stephanie Caulley</h1>
-        <h3>Developer Extrodinair</h3>
+        <h3>Developer Extraordinaire</h3>
       </section>
       <nav class="main-nav">
         <div class="icon-menu"></div>

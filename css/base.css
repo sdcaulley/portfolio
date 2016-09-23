@@ -7,6 +7,10 @@ body {
   background-image: url(../img/seamless_paper_texture.png);
 }
 
+h1, h2, h3 {
+  font-family: 'Arima Madurai', cursive;
+}
+
 a {
   text-decoration: none;
 }

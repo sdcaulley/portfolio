@@ -14,12 +14,17 @@ projectView.handleCategoryFilter = function() {
       var categoryValue = $(this).val();
       console.log(categoryValue);
       $('article').hide();
-      $('article li').each(function(index, text) {
-        console.log( index + ': ' + $( this ).text() );
+      $('article').find('li').each(function(index, text) {
         if (text === categoryValue) {
-          $('article').fadeIn('slow');
+          $(this).fadeIn('slow');
         }
       });
+      // $('article ul li').each(function(index, text) {
+      //   console.log( index + ': ' + $( this ).text() );
+      //   if (text === categoryValue) {
+      //     $('article').fadeIn('slow');
+      //   }
+      //});
     } else {
       $('article:not(".template")').show();
     }
