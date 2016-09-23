@@ -17,16 +17,6 @@ Projects.prototype.toHtml = function() {
   var template = Handlebars.compile(source);
   var html = template(this);
 
-  $.each(this.skillShowcased, function(index, value){
-    $('article ul').append('<li data-category="' + value + '">' + value + '</li>');
-  });
-
-  /*for (var i = 0; i < this.skillShowcased.length; i++) {
-    console.log(this.skillShowcased[i]);
-    var skills = '<li data-category="' + this.skillShowcased[i] + '">' + this.skillShowcased[i] + '</li>';
-    $('article ul').append(skills);
-  }*/
-
   return html;
 
 };
