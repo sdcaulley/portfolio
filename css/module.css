@@ -24,10 +24,6 @@
   float: left;
 }
 
-.project-template {
-  display: none;
-}
-
 .project-header, .project-description {
   margin: 2%;
 }

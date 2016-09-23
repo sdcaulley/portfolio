@@ -10,21 +10,18 @@ function Projects (object) {
 }
 
 Projects.prototype.toHtml = function() {
-  var skills = 'Technologies: ';
-  var $newProject = $('article.project-template').clone();
-  $newProject.find('a').attr('href', this.projectUrl);
-  $newProject.find('img').attr('src', this.projectImage);
-  $newProject.find('h3').html(this.title);
+  this.daysAgo = parseInt((new Date() - new Date(this.projectCompleted))/60/60/24/1000);
+  this.publishStatus = 'published ' + this.daysAgo + ' days ago';
   $.each(this.skillShowcased, function(index, value){
-    skills += value + ' ';
+    var skills = '<li data-category="' + value + '">' + value + '</li>';
+    $('article ul').append(skills);
   });
-  $newProject.find('dl').html(skills);
-  $newProject.find('time[pubdate]').attr('title', this.projectCompleted);
-  $newProject.find('time').html('Completed about ' + parseInt((new Date() - new Date(this.projectCompleted))/60/60/24/1000) + ' days ago');
-  $newProject.find('section.project-description').html(this.projectDescription);
-  $newProject.removeClass('project-template');
-  $newProject.attr('class', 'desktop-view');
-  return $newProject;
+  var source = $('#template').html();
+  var template = Handlebars.compile(source);
+  var html = template(this);
+
+  return html;
+
 };
 
 codingProjects.sort(function(curElem, nextElem) {
