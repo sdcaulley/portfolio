@@ -12,19 +12,13 @@ projectView.handleCategoryFilter = function() {
   $('#category-filter').on('change', function() {
     if ($(this).val()) {
       var categoryValue = $(this).val();
-      console.log(categoryValue);
       $('article').hide();
-      $('article').find('li').each(function(index, text) {
-        if (text === categoryValue) {
-          $(this).fadeIn('slow');
+      $('article li').each(function () {
+        var skillsTag = $(this).text();
+        if (skillsTag === categoryValue) {
+          $(this).parent().parent().parent().fadeIn('slow');
         }
       });
-      // $('article ul li').each(function(index, text) {
-      //   console.log( index + ': ' + $( this ).text() );
-      //   if (text === categoryValue) {
-      //     $('article').fadeIn('slow');
-      //   }
-      //});
     } else {
       $('article:not(".template")').show();
     }
