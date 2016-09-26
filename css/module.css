@@ -67,3 +67,7 @@
     float: left;
   }
 }
+
+article li {
+  display: inline-block;
+}
