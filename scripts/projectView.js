@@ -1,4 +1,6 @@
 var projectView = {};
+var category = ['Wordpress', 'JavaScript', 'HTML', 'CSS', 'Themeing'];
+
 
 projectView.populateFilters = function() {
   for (var i = 0; i < category.length; i++) {
