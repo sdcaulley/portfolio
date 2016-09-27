@@ -21,10 +21,10 @@
   };
 
   Projects.loadAll = function(input) {
-    input.sort(function(a,b) {
+    Projects.allProjects = input.sort(function(a,b) {
       return (new Date(b.projectCompleted)) - (new Date(a.projectCompleted));
-    }).forEach(function(ele) {
-      Projects.all.push(new Projects(ele));
+    }).map(function(ele) {
+      return new Projects(ele);
     });
   };
 

@@ -60,7 +60,7 @@
   };
 
   projectView.renderIndexPage = function() {
-    Projects.all.forEach(function(a) {
+    Projects.allProjects.forEach(function(a) {
       $('#projects').append(a.toHtml());
     });
     projectView.handleMainNav();
