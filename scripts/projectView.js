@@ -3,11 +3,11 @@ var category = ['Wordpress', 'JavaScript', 'HTML', 'CSS', 'Themeing'];
 
 
 projectView.populateFilters = function() {
-  for (var i = 0; i < category.length; i++) {
+  category.forEach(function(currentValue) {
     var optionTag;
-    optionTag = '<option value="' + category[i] + '">' + category[i] + '</option>';
+    optionTag = '<option value="' + currentValue + '">' + currentValue + '</option>';
     $('#category-filter').append(optionTag);
-  };
+  });
 };
 
 projectView.handleCategoryFilter = function() {
