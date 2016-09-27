@@ -57,8 +57,15 @@ projectView.setTeasers = function() {
   $('.read-on').on('click', descriptionExpand);
 };
 
+projectView.renderIndexPage = function() {
+  Projects.all.forEach(function(a) {
+    $('#projects').append(a.toHtml());
+  });
+  projectView.handleMainNav();
+  projectView.setTeasers();
+  projectView.populateFilters();
+  projectView.handleCategoryFilter();
+};
+
 //Call all the methods
-projectView.handleMainNav();
-projectView.setTeasers();
-projectView.populateFilters();
-projectView.handleCategoryFilter();
+Projects.fetchAll();
