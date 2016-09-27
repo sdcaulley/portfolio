@@ -1,4 +1,6 @@
 var projectView = {};
+var category = ['Wordpress', 'JavaScript', 'HTML', 'CSS', 'Themeing'];
+
 
 projectView.populateFilters = function() {
   for (var i = 0; i < category.length; i++) {
@@ -55,8 +57,15 @@ projectView.setTeasers = function() {
   $('.read-on').on('click', descriptionExpand);
 };
 
+projectView.renderIndexPage = function() {
+  Projects.all.forEach(function(a) {
+    $('#projects').append(a.toHtml());
+  });
+  projectView.handleMainNav();
+  projectView.setTeasers();
+  projectView.populateFilters();
+  projectView.handleCategoryFilter();
+};
+
 //Call all the methods
-projectView.handleMainNav();
-projectView.setTeasers();
-projectView.populateFilters();
-projectView.handleCategoryFilter();
+Projects.fetchAll();

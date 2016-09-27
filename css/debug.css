@@ -1,0 +1,23 @@
+body {
+  background-color: blue;
+}
+
+header {
+  background-color: green;
+}
+
+header section {
+  background-color: yellow;
+}
+
+nav {
+  background-color: purple;
+}
+
+#projects {
+  background-color: red;
+}
+
+#filters {
+  background-color: brown;
+}

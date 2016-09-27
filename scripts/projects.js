@@ -1,13 +1,10 @@
-var projects = [];
-
 function Projects (object) {
-  this.title = object.title;
-  this.projectUrl = object.projectUrl;
-  this.projectImage = object.projectImage;
-  this.projectCompleted = object.projectCompleted;
-  this.projectDescription = object.projectDescription;
-  this.skillShowcased = object.skillShowcased;
+  for (keys in object) {
+    this[keys] = object[keys];
+  }
 }
+
+Projects.all = [];
 
 Projects.prototype.toHtml = function() {
   this.daysAgo = parseInt((new Date() - new Date(this.projectCompleted))/60/60/24/1000);
@@ -21,14 +18,49 @@ Projects.prototype.toHtml = function() {
 
 };
 
-codingProjects.sort(function(curElem, nextElem) {
-  return (new Date(nextElem.projectCompleted)) - (new Date(curElem.projectCompleted));
-});
+Projects.loadAll = function(input) {
+  input.sort(function(a,b) {
+    return (new Date(b.projectCompleted)) - (new Date(a.projectCompleted));
+  }).forEach(function(ele) {
+    Projects.all.push(new Projects(ele));
+  });
+};
 
-codingProjects.forEach(function(ele) {
-  projects.push(new Projects(ele));
-});
-
-projects.forEach(function(a) {
-  $('#projects').append(a.toHtml());
-});
+Projects.fetchAll = function() {
+  var text = '';
+  var eTag = '';
+  if (localStorage.projectObjects) {
+    $.ajax('/scripts/projectObjects.json').done(function(response, status, jqxhr){
+      eTag = (jqxhr.getResponseHeader('ETag'));
+      var storedEtag = localStorage.getItem('ETag');
+      if (eTag === storedEtag) {
+        text = localStorage.getItem('projectObjects');
+        text = JSON.parse(text);
+        Projects.loadAll(text);
+        projectView.renderIndexPage();
+      }
+      else {
+        $.getJSON('/scripts/projectObjects.json').done(function(data) {
+          text = JSON.stringify(data);
+          localStorage.setItem('projectObjects', text);
+          text = JSON.parse(text);
+          Projects.loadAll(text);
+          projectView.renderIndexPage();
+        });
+      }
+    });
+  } else {
+    $.ajax('/scripts/projectObjects.json').done(function(response, status, jqxhr){
+      var eTag = (jqxhr.getResponseHeader('ETag'));
+      console.log(eTag);
+      localStorage.setItem('ETag', eTag);
+    });
+    $.getJSON('/scripts/projectObjects.json').done(function(data) {
+      text = JSON.stringify(data);
+      localStorage.setItem('projectObjects', text);
+      text = JSON.parse(text);
+      Projects.loadAll(text);
+      projectView.renderIndexPage();
+    });
+  }
+};
