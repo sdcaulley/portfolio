@@ -66,5 +66,16 @@
       });
     }
   };
+
+  Projects.allCategories = function() {
+    return Projects.allProjects.reduce(function(acc, curr) {
+      return acc.concat(curr.skillShowcased);
+    }, []).reduce(function(prev, next) {
+      console.log(prev);
+      prev[next] = (prev[next] || 0) + 1;
+      return prev;
+    }, {});
+  };
+
   module.Projects = Projects;
 })(window);
