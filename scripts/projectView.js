@@ -59,6 +59,20 @@
     $('.read-on').on('click', descriptionExpand);
   };
 
+  projectView.categoryList = function(object) {
+    //object = Projects.allCategories();
+    console.log('pcl' + JSON.stringify(object));
+
+    //for (var bbkey in object) { console.log('bb' + bbkey + " ->" + object[bbkey])}
+
+    for (keys in object) {
+      this.keys = object.keys;
+      var categoryTag;
+      categoryTag = '<li>' + keys + ' : ' + object[keys] + '</li>';
+      $('#category-list').append(categoryTag);
+    };
+  };
+
   projectView.renderIndexPage = function() {
     Projects.allProjects.forEach(function(a) {
       $('#projects').append(a.toHtml());
@@ -67,6 +81,7 @@
     projectView.setTeasers();
     projectView.populateFilters();
     projectView.handleCategoryFilter();
+    projectView.categoryList(Projects.allCategories());
   };
 
   //Call all the methods
