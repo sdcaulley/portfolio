@@ -8,7 +8,7 @@ body {
   background-image: url(../img/seamless_paper_texture.png);
 }
 
-h1, h2, h3 {
+h1, h2, h3, li, a {
   font-family: 'Arima Madurai', cursive;
   font-weight: 400;
   margin: 1.414em 0 0.5em;
@@ -17,10 +17,23 @@ h1, h2, h3 {
 
 a {
   text-decoration: none;
+  color: blue;
+}
+
+a:hover {
+  color: green;
+}
+
+.tab {
+  text-decoration: none;
+  font-family: 'Arima Madurai', cursive;
+  font-weight: 400;
+  font-size: 1.5em;
 }
 
 li {
   list-style-type: none;
+  font-size: 1em;
 }
 
 article {
@@ -32,25 +45,6 @@ img {
   max-width: 75%;
   display: block;
   margin: auto;
-}
-
-
-
-
-html {}
-
-body {
-  background-color: white;
-  font-family: 'Arima Madurai', cursive;
-  font-weight: 400;
-  line-height: 1.45;
-  color: #333;
-}
-
-p {margin-bottom: 1.3em;}
-
-h1, h2, h3, h4 {
-
 }
 
 h1 {
