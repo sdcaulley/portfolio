@@ -71,13 +71,10 @@
     var concatArray = Projects.allProjects.reduce(function(acc, curr) {
       return acc.concat(curr.skillShowcased);
     },[]);
-    console.log(concatArray);
     var myout = concatArray.reduce(function(prev, next) {
       prev[next] = (prev[next] || 0) + 1;
-      console.log(prev);
       return prev;
     }, {});
-    console.log('Myout=' + JSON.stringify(myout));
     return myout;
   };
 

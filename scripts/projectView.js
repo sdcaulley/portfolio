@@ -60,11 +60,6 @@
   };
 
   projectView.categoryList = function(object) {
-    //object = Projects.allCategories();
-    console.log('pcl' + JSON.stringify(object));
-
-    //for (var bbkey in object) { console.log('bb' + bbkey + " ->" + object[bbkey])}
-
     for (keys in object) {
       this.keys = object.keys;
       var categoryTag;
