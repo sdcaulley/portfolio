@@ -20,7 +20,7 @@
         $('article li').each(function () {
           var skillsTag = $(this).text();
           if (skillsTag === categoryValue) {
-            $(this).parent().parent().parent().fadeIn('slow');
+            $(this).parent().parent().parent().parent().fadeIn('slow');
           }
         });
       } else {
