@@ -14,13 +14,14 @@
           <a href="{{projectUrl}}"><img src="{{projectImage}}" />
           <h3>{{title}}</h3></a>
           <p>{{publishStatus}}</p>
-          <p>Technologies:
+          <div class="flex-list">
+            <p id="tech">Technologies: </p>
             <ul class="skills">
               {{#each skillShowcased}}
               <li>{{this}}</li>
               {{/each}}
             </ul>
-          </p>
+          </div>
         </header>
         <section class="project-description">{{{projectDescription}}}</section>
         <a href="#" class="read-on">More</a>

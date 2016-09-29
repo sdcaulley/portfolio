@@ -32,6 +32,8 @@ a:hover {
 
 li {
   list-style-type: none;
+  display: inline-block;
+  padding-left: 1em;
 }
 
 article {
