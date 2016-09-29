@@ -30,13 +30,13 @@
   };
 
   projectView.handleMainNav = function () {
-    $('.main-nav .tab').on('click', function() {
+    $('.main-nav li').on('click', function() {
       var tabValue = $(this).attr('data-content');
       $('.tab-content').hide();
       $('#' + tabValue).fadeIn('slow');
     });
 
-    $('.main-nav .tab:first').click();
+    $('.main-nav li:first').click();
   };
 
   projectView.setTeasers = function() {

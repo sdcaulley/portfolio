@@ -10,7 +10,7 @@
 
   Projects.prototype.toHtml = function() {
     this.daysAgo = parseInt((new Date() - new Date(this.projectCompleted))/60/60/24/1000);
-    this.publishStatus = 'published ' + this.daysAgo + ' days ago';
+    this.publishStatus = 'Published ' + this.daysAgo + ' days ago';
 
     var source = $('#template').html();
     var template = Handlebars.compile(source);
