@@ -1,5 +1,4 @@
   var projectView = {};
-  var category = ['Wordpress', 'JavaScript', 'HTML', 'CSS', 'Themeing'];
 
   projectView.populateFilters = function() {
     var concatArray = Projects.allProjects.reduce(function(acc, curr) {
@@ -24,7 +23,7 @@
         $('article li').each(function () {
           var skillsTag = $(this).text();
           if (skillsTag === categoryValue) {
-            $(this).parent().parent().parent().parent().fadeIn('slow');
+            $(this).parentsUntill('#projects').fadeIn('slow');
           }
         });
       } else {
@@ -48,19 +47,16 @@
     in any article body: */
     $('.project-description *:nth-of-type(n+3)').hide();
 
-    descriptionExpand = function(e) {
+    $('article').on('click', 'a.read-on', function(e) {
       e.preventDefault();
-      $(this).parent().find('.project-description *:nth-of-type(n+3)').show();
-      $(this).html('Show Less').removeAttr('class').attr('class', 'show-less').on('click', descriptionCollapse);
-    };
-
-    descriptionCollapse = function(e) {
-      e.preventDefault();
-      $(this).parent().find('.project-description *:nth-of-type(n+3)').hide();
-      $(this).html('More').removeAttr('class').attr('class', 'read-on').on('click', descriptionExpand);
-    };
-
-    $('.read-on').on('click', descriptionExpand);
+      if($(this).text() === 'More') {
+        $(this).parent().find('*').fadeIn();
+        $(this).html('Show Less');
+      } else {
+        $(this).html('More');
+        $(this).parent().find('.project-description *:nth-of-type(n+3)').hide();
+      }
+    });
   };
 
   projectView.renderIndexPage = function() {
