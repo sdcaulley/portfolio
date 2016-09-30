@@ -5,19 +5,16 @@
       this[keys] = object[keys];
     }
   }
-
+  //Handlebars template
   Projects.prototype.toHtml = function() {
     this.daysAgo = parseInt((new Date() - new Date(this.projectCompleted))/60/60/24/1000);
     this.publishStatus = 'Published ' + this.daysAgo + ' days ago';
-
     var source = $('#template').html();
     var template = Handlebars.compile(source);
     var html = template(this);
-
     return html;
-
   };
-
+  //Sort array of projects from newest to oldest
   Projects.loadAll = function(input) {
     Projects.allProjects = input.sort(function(a,b) {
       return (new Date(b.projectCompleted)) - (new Date(a.projectCompleted));
@@ -25,7 +22,7 @@
       return new Projects(ele);
     });
   };
-
+  //Place or pull from localStorage
   Projects.fetchAll = function() {
     var $getETag = function() {
       $.getJSON('/scripts/projectObjects.json').done(function(response, status, jqxhr){

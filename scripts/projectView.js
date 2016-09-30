@@ -1,7 +1,7 @@
 (function(module) {
 
   var projectView = {};
-
+  //Dynamically populate selector with categories and number of projects per category
   projectView.populateFilters = function() {
     var concatArray = Projects.allProjects.reduce(function(acc, curr) {
       return acc.concat(curr.skillShowcased);
@@ -16,7 +16,7 @@
       $('#category-filter').append(optionTag);
     };
   };
-
+  //Display projects by category
   projectView.handleCategoryFilter = function() {
     $('#category-filter').on('change', function() {
       if ($(this).val()) {
@@ -33,22 +33,18 @@
       }
     });
   };
-
+  //Main navigation has tabular function
   projectView.handleMainNav = function () {
     $('.main-nav li').on('click', function() {
       var tabValue = $(this).attr('data-content');
       $('.tab-content').hide();
       $('#' + tabValue).fadeIn('slow');
     });
-
     $('.main-nav li:first').click();
   };
-
+  //Hide and expand text
   projectView.setTeasers = function() {
-    /* Hide any elements after the first 2 (<p> Tags in case)
-    in any article body: */
     $('.project-description *:nth-of-type(n+3)').hide();
-
     $('article').on('click', 'a.read-on', function(e) {
       e.preventDefault();
       if($(this).text() === 'More') {
@@ -60,7 +56,7 @@
       }
     });
   };
-
+  //Create the over all page view
   projectView.renderIndexPage = function() {
     Projects.allProjects.forEach(function(a) {
       $('#projects').append(a.toHtml());
@@ -70,8 +66,7 @@
     projectView.populateFilters();
     projectView.handleCategoryFilter();
   };
-
-  //Call all the methods
+  //Set the page in motion
   Projects.fetchAll();
   module.projectView = projectView;
 })(window);
