@@ -1,3 +1,5 @@
+(function(module) {
+
   var projectView = {};
 
   projectView.populateFilters = function() {
@@ -23,7 +25,7 @@
         $('article li').each(function () {
           var skillsTag = $(this).text();
           if (skillsTag === categoryValue) {
-            $(this).parentsUntill('#projects').fadeIn('slow');
+            $(this).parentsUntil('#projects').fadeIn('slow');
           }
         });
       } else {
@@ -71,3 +73,5 @@
 
   //Call all the methods
   Projects.fetchAll();
+  module.projectView = projectView;
+})(window);
