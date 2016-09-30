@@ -2,11 +2,18 @@
   var category = ['Wordpress', 'JavaScript', 'HTML', 'CSS', 'Themeing'];
 
   projectView.populateFilters = function() {
-    category.forEach(function(currentValue) {
-      var optionTag;
-      optionTag = '<option value="' + currentValue + '">' + currentValue + '</option>';
+    var concatArray = Projects.allProjects.reduce(function(acc, curr) {
+      return acc.concat(curr.skillShowcased);
+    },[]);
+    var myout = concatArray.reduce(function(prev, next) {
+      prev[next] = (prev[next] || 0) + 1;
+      return prev;
+    }, {});
+    for (keys in myout) {
+      this.keys = myout.keys;
+      var optionTag = '<option value="' + keys + '">' + keys + '" "' + myout[keys] + '</option>';
       $('#category-filter').append(optionTag);
-    });
+    };
   };
 
   projectView.handleCategoryFilter = function() {
@@ -56,15 +63,6 @@
     $('.read-on').on('click', descriptionExpand);
   };
 
-  projectView.categoryList = function(object) {
-    for (keys in object) {
-      this.keys = object.keys;
-      var categoryTag;
-      categoryTag = '<li>' + keys + ' : ' + object[keys] + '</li>';
-      $('#category-list').append(categoryTag);
-    };
-  };
-
   projectView.renderIndexPage = function() {
     Projects.allProjects.forEach(function(a) {
       $('#projects').append(a.toHtml());
@@ -73,7 +71,6 @@
     projectView.setTeasers();
     projectView.populateFilters();
     projectView.handleCategoryFilter();
-    projectView.categoryList(Projects.allCategories());
   };
 
   //Call all the methods

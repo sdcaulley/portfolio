@@ -26,14 +26,12 @@ Projects.loadAll = function(input) {
 };
 
 Projects.fetchAll = function() {
-
   var $getETag = function() {
     $.getJSON('/scripts/projectObjects.json').done(function(response, status, jqxhr){
       var eTag = (jqxhr.getResponseHeader('ETag'));
       return eTag;
     });
   };
-
   var $setLocalStorage = function () {
     $.getJSON('/scripts/projectObjects.json').done(function(response, status, jqxhr){
       localStorage.eTag = jqxhr.getResponseHeader('ETag');
@@ -42,7 +40,6 @@ Projects.fetchAll = function() {
       projectView.renderIndexPage();
     });
   };
-
   if (localStorage.projectObjects) {
     if ($getETag() === localStorage.getItem('ETag')) {
       Projects.loadAll(JSON.parse(localStorage.getItem('projectObjects')));
@@ -53,15 +50,4 @@ Projects.fetchAll = function() {
   } else {
     $setLocalStorage();
   }
-};
-
-Projects.allCategories = function() {
-  var concatArray = Projects.allProjects.reduce(function(acc, curr) {
-    return acc.concat(curr.skillShowcased);
-  },[]);
-  var myout = concatArray.reduce(function(prev, next) {
-    prev[next] = (prev[next] || 0) + 1;
-    return prev;
-  }, {});
-  return myout;
 };
