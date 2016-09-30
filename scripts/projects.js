@@ -26,41 +26,32 @@ Projects.loadAll = function(input) {
 };
 
 Projects.fetchAll = function() {
-  var text = '';
-  var eTag = '';
-  if (localStorage.projectObjects) {
-    $.ajax('/scripts/projectObjects.json').done(function(response, status, jqxhr){
-      eTag = (jqxhr.getResponseHeader('ETag'));
-      var storedEtag = localStorage.getItem('ETag');
-      if (eTag === storedEtag) {
-        text = localStorage.getItem('projectObjects');
-        text = JSON.parse(text);
-        Projects.loadAll(text);
-        projectView.renderIndexPage();
-      }
-      else {
-        $.getJSON('/scripts/projectObjects.json').done(function(data) {
-          text = JSON.stringify(data);
-          localStorage.setItem('projectObjects', text);
-          text = JSON.parse(text);
-          Projects.loadAll(text);
-          projectView.renderIndexPage();
-        });
-      }
-    });
-  } else {
-    $.ajax('/scripts/projectObjects.json').done(function(response, status, jqxhr){
+
+  var $getETag = function() {
+    $.getJSON('/scripts/projectObjects.json').done(function(response, status, jqxhr){
       var eTag = (jqxhr.getResponseHeader('ETag'));
-      console.log(eTag);
-      localStorage.setItem('ETag', eTag);
+      return eTag;
     });
-    $.getJSON('/scripts/projectObjects.json').done(function(data) {
-      text = JSON.stringify(data);
-      localStorage.setItem('projectObjects', text);
-      text = JSON.parse(text);
-      Projects.loadAll(text);
+  };
+
+  var $setLocalStorage = function () {
+    $.getJSON('/scripts/projectObjects.json').done(function(response, status, jqxhr){
+      localStorage.eTag = jqxhr.getResponseHeader('ETag');
+      localStorage.projectObjects = response;
+      Projects.loadAll(response);
       projectView.renderIndexPage();
     });
+  };
+
+  if (localStorage.projectObjects) {
+    if ($getETag() === localStorage.getItem('ETag')) {
+      Projects.loadAll(JSON.parse(localStorage.getItem('projectObjects')));
+      projectView.renderIndexPage();
+    } else {
+      $setLocalStorage();
+    }
+  } else {
+    $setLocalStorage();
   }
 };
 
