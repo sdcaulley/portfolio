@@ -1,8 +1,5 @@
-(function(module) {
-
   var projectView = {};
   var category = ['Wordpress', 'JavaScript', 'HTML', 'CSS', 'Themeing'];
-
 
   projectView.populateFilters = function() {
     category.forEach(function(currentValue) {
@@ -81,6 +78,3 @@
 
   //Call all the methods
   Projects.fetchAll();
-
-  module.projectView = projectView;
-})(window);
