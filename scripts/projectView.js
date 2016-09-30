@@ -11,7 +11,7 @@
     }, {});
     for (keys in myout) {
       this.keys = myout.keys;
-      var optionTag = '<option value="' + keys + '">' + keys + '" "' + myout[keys] + '</option>';
+      var optionTag = '<option value="' + keys + '">' + keys + ' ' + myout[keys] + '</option>';
       $('#category-filter').append(optionTag);
     };
   };
