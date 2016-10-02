@@ -38,13 +38,9 @@
         projectView.renderIndexPage();
       });
     };
-    if (localStorage.projectObjects) {
-      if ($getETag() === localStorage.getItem('ETag')) {
-        Projects.loadAll(JSON.parse(localStorage.getItem('projectObjects')));
-        projectView.renderIndexPage();
-      } else {
-        $setLocalStorage();
-      }
+    if (localStorage.projectObjects && $getETag() === localStorage.getItem('ETag')) {
+      Projects.loadAll(JSON.parse(localStorage.getItem('projectObjects')));
+      projectView.renderIndexPage();
     } else {
       $setLocalStorage();
     }
