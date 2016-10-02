@@ -8,24 +8,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="vendor/styles/normalize.css">
     <link rel="stylesheet" href="css/style.css">
+<!-- Handlebars template begin-->
     <script id="template" type="text/x-handlebars-template">
       <article class="desktop-view">
         <header class="project-header">
           <a href="{{projectUrl}}"><img src="{{projectImage}}" />
           <h3>{{title}}</h3></a>
-          {{publishStatus}}
-          <p>Technologies:
+          <p>{{publishStatus}}</p>
+          <div class="flex-list">
+            <p id="tech">Technologies: </p>
             <ul class="skills">
               {{#each skillShowcased}}
               <li>{{this}}</li>
               {{/each}}
             </ul>
-          </p>
+          </div>
         </header>
         <section class="project-description">{{{projectDescription}}}</section>
         <a href="#" class="read-on">More</a>
       </article>
     </script>
+<!-- Handlebars template end-->
   </head>
   <body>
     <header class="group">
@@ -36,18 +39,18 @@
       <nav class="main-nav">
         <div class="icon-menu"></div>
         <ul>
-          <li class="tab" data-content="home"><a href="#" class="icon-home"> Home</a></li>
-          <li class="tab" data-content="about"><a href="#" class="icon-user"> About</a></li>
-          <li class="tab"><a href="https://twitter.com/sdcaulley" class="icon-twitter" target="_blank"> Twitter</a></li>
-          <li class="tab"><a href="https://www.linkedin.com/in/sdcaulley" class="icon-linkedin2" target="_blank"> LinkedIn</a></li>
-          <li class="tab"><a href="https://github.com/sdcaulley" class="icon-github" target="_blank"> GitHub</a></li>
+          <li data-content="home"><a href="#" class="icon-home"><span class="liStyle"> Home</span></a></li>
+          <li data-content="about"><a href="#" class="icon-user"><span class="liStyle"> About</span></a></li>
+          <li><a href="https://twitter.com/sdcaulley" class="icon-twitter" target="_blank"><span class="liStyle"> Twitter</span></a></li>
+          <li><a href="https://www.linkedin.com/in/sdcaulley" class="icon-linkedin2" target="_blank"><span class="liStyle"> LinkedIn</span></a></li>
+          <li><a href="https://github.com/sdcaulley" class="icon-github" target="_blank"><span class="liStyle"> GitHub</span></a></li>
         </ul>
       </nav>
     </header>
     <main>
       <section id="home" class="tab-content">
         <div id="filter">
-          <ul id="filters">
+          <ul id="filters" class="liStyle">
             <li>
               <select id="category-filter">
                 <option value="">---Filter by Category</option>
@@ -57,10 +60,9 @@
         </div>
         <section id="projects" class="flex-container"></section>
       </section>
-      <section id="about" class="flex-container tab-content">Test content for about.</section>
+      <section id="about" class="tab-content">Test content for about.</section>
     </main>
     <footer>
-      <div id="category-list"></div>
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
