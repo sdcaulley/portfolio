@@ -33,15 +33,6 @@
       }
     });
   };
-  //Main navigation has tabular function
-  projectView.handleMainNav = function () {
-    $('.main-nav li').on('click', function() {
-      var tabValue = $(this).attr('data-content');
-      $('.tab-content').hide();
-      $('#' + tabValue).fadeIn('slow');
-    });
-    $('.main-nav li:first').click();
-  };
   //Hide and expand text
   projectView.setTeasers = function() {
     $('.project-description *:nth-of-type(n+3)').hide();
@@ -61,7 +52,6 @@
     Projects.allProjects.forEach(function(a) {
       $('#projects').append(a.toHtml());
     });
-    projectView.handleMainNav();
     projectView.setTeasers();
     projectView.populateFilters();
     projectView.handleCategoryFilter();
