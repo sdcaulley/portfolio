@@ -25,13 +25,13 @@
   //Place or pull from localStorage
   Projects.fetchAll = function() {
     var $getETag = function() {
-      $.getJSON('/scripts/projectObjects.json').done(function(response, status, jqxhr){
+      $.getJSON('/scripts/data/projectObjects.json').done(function(response, status, jqxhr){
         var eTag = (jqxhr.getResponseHeader('ETag'));
         return eTag;
       });
     };
     var $setLocalStorage = function () {
-      $.getJSON('/scripts/projectObjects.json').done(function(response, status, jqxhr){
+      $.getJSON('/scripts/data/projectObjects.json').done(function(response, status, jqxhr){
         localStorage.eTag = jqxhr.getResponseHeader('ETag');
         localStorage.projectObjects = response;
         Projects.loadAll(response);
