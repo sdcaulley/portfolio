@@ -6,7 +6,7 @@
 
   repoView.renderRepos = function() {
     $('#about ul').empty().append(
-      reposObj.withTheAttribute('fork').map(repoCompiler)
+      reposObj.withTheAttribute('name').map(repoCompiler)
     );
   };
   reposObj.requestRepos(repoView.renderRepos);
