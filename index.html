@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/style.css">
 <!-- Handlebars template begin-->
     <script id="template" type="text/x-handlebars-template">
-      <article class="desktop-view">
+      <article class="desktop-view border">
         <header class="project-header">
           <a href="{{projectUrl}}"><img src="{{projectImage}}" />
           <h3>{{title}}</h3></a>
@@ -29,7 +29,7 @@
       </article>
     </script>
     <script id="repo-template" type="text/x-handlebars-template">
-      <li>
+      <li class="desktop-view border">
         <a href="{{html_url}}" target="_blank"><h3>{{name}}</h3></a>
         <p>Description: {{description}}</p>
         <p>Primary Language: {{language}}</p>
@@ -75,9 +75,11 @@
       <section id="about" class="tab-content">
         <h1>Activity on GitHub</h1>
           <h3>Repositories</h3>
+          <section class="flex-container">
             <ul>
               <li></li>
             </ul>
+          </section>
       </section>
     </main>
     <footer>

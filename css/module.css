@@ -19,6 +19,10 @@
   display: block;
 }
 
+.main-nav li {
+  display: block;
+}
+
 .header {
   display: inline-block;
   float: left;
@@ -66,10 +70,13 @@ article ul {
   .main-nav:hover ul {
     display: inline;
   }
+  .main-nav li {
+    display: inline-block;
+  }
   .flex-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
   }
   .desktop-view {
     width: 30%;
