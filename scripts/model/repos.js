@@ -5,8 +5,7 @@
 
   reposObj.requestRepos = function(callback) {
     $.ajax({
-      url: 'https://api.github.com/users/sdcaulley/repos',
-      headers: {Authorization: 'token ' + githubtoken},
+      url: '/users/sdcaulley/repos',
       success: function(data) {
         reposObj.allRepos = data;
         callback();
