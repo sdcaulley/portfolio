@@ -29,8 +29,6 @@
       dateArray.push(obj);
     });
 
-
-    console.log('dateArray', dateArray);
     return dateArray.filter(function(aRepo) {
       return aRepo[myAttr];
     });
