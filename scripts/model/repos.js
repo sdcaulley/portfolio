@@ -5,8 +5,7 @@
 
   reposObj.requestRepos = function(callback) {
     $.ajax({
-      url: 'https://api.github.com/users/sdcaulley/repos',
-      headers: {Authorization: 'token ' + githubtoken},
+      url: '/github/users/sdcaulley/repos',
       success: function(data) {
         reposObj.allRepos = data;
         callback();
@@ -30,8 +29,6 @@
       dateArray.push(obj);
     });
 
-
-    console.log('dateArray', dateArray);
     return dateArray.filter(function(aRepo) {
       return aRepo[myAttr];
     });
